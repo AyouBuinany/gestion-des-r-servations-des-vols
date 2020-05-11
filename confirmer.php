@@ -1,12 +1,6 @@
 <?php
 include 'action.php';
-
-session_unset();
-session_destroy();
-
-$request="select *, (Adult+children) as 'seats' from reservation,flights_list where flights_list.id=reservation.id_flight  order by id_reservation DESC LIMIT 1 ";
-$fetchRow=request($request);
-
+$id_reserver="";
 $IdReservation="";
 $fullName= "";
 $numTelephone="";
@@ -22,7 +16,11 @@ $flyingFrom= "";
 $flyingTo= "";
 $seats= "";
 $idAir="";
-if( isset($fetchRow)){
+if(isset($_SESSION["id"])){
+$id_reserver= $_SESSION["id"] ;
+$request="select *, (Adult+children) as 'seats' from reservation,flights_list where flights_list.id=reservation.id_flight  AND reservation.id_reservation=$id_reserver";
+$fetchRow=request($request);
+if(isset($fetchRow)){
 $readRow=mysqli_fetch_row($fetchRow);
 $IdReservation=$readRow[0];
 $fullName= $readRow[1];
@@ -39,6 +37,7 @@ $idAir=$readRow[12];
 $flyingFrom= $readRow[13];
 $flyingTo= $readRow[14];
 $seats=$readRow[18];
+}
 }
 ?>
 

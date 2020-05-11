@@ -53,5 +53,5 @@ select * , (Adult+children) as 'seats' from reservation,flights_list where fligh
 INSERT INTO `reservation`( `FullName`, `numeroTel`, `email`, `numeroPassport`, `departingDate`, `returningDate`, `Adult`, `children`, `travel_class`, `price`, `id_flight`) VALUES
      ('ayoub','080889','ayyoub@gmail.com','1120MMM','2020-6-15','2020-3-9',3,4,'bess','333000',1);
 UPDATE flights_list f,reservation r SET f.seats=f.seats+3 where f.id=2;
-INSERT INTO `reservation`(`FullName`, `numeroTel`, `email`, `numeroPassport`, `departingDate`, `returningDate`, `Adult`, `children`, `travel_class`, `price`, `id_flight`) VALUES
-     ('kamal chokran','06121898998','ayoub.elbouinany99@gmail.fr','2020-05-29','2020-05-31',1,1,'Bussness Class','1100 DH',2);
+INSERT INTO reservation VALUES
+     (2,'kamal chokran','06121898998','ayoub.elbouinany99@gmail.fr','2020-05-29','2020-05-31',1,1,'Bussness Class','1100 DH',2);

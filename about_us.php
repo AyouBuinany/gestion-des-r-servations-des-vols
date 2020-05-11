@@ -1,3 +1,8 @@
+<?php 
+include "action.php";
+session_unset();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

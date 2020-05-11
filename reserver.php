@@ -1,6 +1,5 @@
 <?php
 include 'action.php';
- //echo "hello".$_SERVER["PHP_SELF"]."?reserver=".$_GET["reserver"];
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +14,9 @@ include 'action.php';
 </head>
 <div id="up"><a href="#top"><i class="fa fa-chevron-circle-up"></i></a></div>
     <br><br><br><br>
+    <?php if($messageExist):?>
+    <div id="alert"> Sorry id déja exist !</div>
+    <?php endif;?>
 <div  id="inpContainer" class="inputs-container2">
         <div class="error"></div>
         <br>
@@ -26,6 +28,7 @@ include 'action.php';
             </div>
             <br>
             <div id="first-row">
+            <input type="text" name="id_reserver" id="id_reserver" required placeholder="Enter id ">
                <input type="text" name="f_name" id="f_name" required placeholder="Enter your Full name">
                <input type="tel"  id="phone" required name="phone" placeholder="Enter your phone" >
             </div>

@@ -33,7 +33,9 @@ text-align: center;'> Welcome To Morocco AirLines  From ". $flying_from ." To ".
 
   //reservation
   $ajouter=false;
+  $messageExist=false;
   if(isset($_POST["reservation"])){
+    $id_reservation=$_POST["id_reserver"];
     $fullName=$_POST["f_name"];
     $phone=$_POST["phone"];
     $email=$_POST["email"];
@@ -45,12 +47,13 @@ text-align: center;'> Welcome To Morocco AirLines  From ". $flying_from ." To ".
     $travel_class=$_POST["travel_class"];
     $price=$_POST["price"];
     $idAir=$_POST["id_air"];
-    $request="INSERT INTO `reservation`(FullName, numeroTel, email, numeroPassport, departingDate, returningDate, Adult, children, travel_class, price, id_flight)
-     VALUES
-     ('$fullName','$phone','$email','$num_passport','$departing','$returning',$adults,$children,'$travel_class','$price','$idAir')";
-     request($request);
+    $_SESSION["id"]=$_POST["id_reserver"];
+    $request="INSERT INTO `reservation` VALUES(60,'kamal chokran','06121898998','ayoub.elbouinany99@gmail.fr','pKKjj','2020-05-29','2020-05-31',1,1,'Bussness Class','1100 DH',2)";
+
+    $request="INSERT INTO `reservation` VALUES($id_reservation,'$fullName','$phone','$email','$num_passport','$departing','$returning',$adults,$children,'$travel_class','$price','$idAir')";
+     request($request) or die("<div style='background-color: #e04c4c;text-align: center;padding: 20px;margin: 10%;color: white;font-family: fantasy;'>Sorry mister $fullName your id déja exist </div>");
      $ajouter=true;
-     sleep(1.5);
+      sleep(1.5);
   }
   //Modifier seats in table flights_list;
   $modifier=false;
